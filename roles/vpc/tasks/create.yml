@@ -1,0 +1,10 @@
+- name: Creating VPC
+  amazon.aws.ec2_vpc_net:
+    cidr_block: 10.0.0.0/16
+    name: "{{ vpc_name }}"
+  register: vpc_info
+
+- name: Debug VPC creation info
+  debug:
+    msg:
+      - "{{ vpc_info }}"

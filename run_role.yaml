@@ -1,0 +1,7 @@
+---
+- name: Configuring VPC in AWS cloud
+  hosts: localhost
+  vars:
+    vpc_action: "{{ lookup('env','VPC_ACTION') | default('create',True) }}"
+  roles: 
+    - vpc
