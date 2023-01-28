@@ -1,0 +1,21 @@
+- name: Fetch Subnet Id
+  amazon.aws.ec2_vpc_subnet_info:
+    filters:
+      "tag:Name": "{{ subnet_name }}"
+
+- name: launch an EC2 instance
+  ec2:
+    key_name: "{{ key_name }}"
+    group: "{{ sg_name }}"
+    instance_type: "{{ instance_type }}"
+    image: "{{ ami_id }}"
+    wait: yes
+    region: "{{ aws_region }}"
+    vpc_subnet_id: "{{ subnet_id }}"
+    assign_public_ip: yes
+  register: ec2_info
+
+- name: Debug Information
+  debug:
+    msg:
+      - "{{ ec2_info }}"

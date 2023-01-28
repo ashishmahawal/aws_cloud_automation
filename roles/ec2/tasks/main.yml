@@ -1,0 +1,2 @@
+- name: Ec2 Instance {{ action }}
+  include_tasks: "{{ action }}.yml"

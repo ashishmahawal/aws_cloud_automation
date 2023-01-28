@@ -1,0 +1,5 @@
+- name: Delete EC2 key pair
+  amazon.aws.ec2_key:
+    state: absent
+    name: "{{ key_name }}-public"
+  register: key_info

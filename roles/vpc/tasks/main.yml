@@ -1,2 +1,2 @@
-- name: Performing {{ vpc_action }} for VPC in AWS
-  include_tasks: "{{ vpc_action }}.yml"
+- name: Performing {{ action }} for VPC in AWS
+  include_tasks: "{{ action }}.yml"

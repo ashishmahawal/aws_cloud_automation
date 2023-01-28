@@ -1,0 +1,2 @@
+key_name: "{{ lookup('env', 'KEY_NAME') | default('ashish-ec2',True) }}"
+action: "{{ lookup('env','ACTION') | default('create',True) }}"

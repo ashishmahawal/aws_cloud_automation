@@ -1,0 +1,4 @@
+vpc_name: "{{ lookup('env','VPC_NAME') }}"
+cidr: "10.0.128.0/18"
+subnet_name: "{{ lookup('env','SUBNET_NAME') }}"
+action: "{{ lookup('env','ACTION') | default('create',True) }}"

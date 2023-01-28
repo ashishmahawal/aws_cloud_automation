@@ -1,0 +1,2 @@
+- name: Performing {{ action }} for VPC subnet
+  include_tasks: "{{ action }}.yml"

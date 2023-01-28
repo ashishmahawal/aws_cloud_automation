@@ -1,0 +1,6 @@
+instance_type: "{{ lookup('env','INSTANCE_TYPE') | default('t2.micro',True) }}"
+ami_id: "{{ lookup('env','AMI_ID') | default('ami-0aa7d40eeae50c9a9',True) }}"
+sg_name: "{{ lookup('env','SG_NAME') }}"
+aws_region: "{{ lookup('env','AWS_REGION') | default('us-east-1',True) }}"
+subnet_name: "{{ lookup('env','SUBNET_NAME') }}"
+action: "{{ lookup('env','ACTION') | default('create',True) }}"

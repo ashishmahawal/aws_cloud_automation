@@ -1,0 +1,6 @@
+- name: Configure AWS Subnet in VPC
+  hosts: localhost
+  vars:
+    role: "{{ lookup('env','ROLE') }}"
+  roles:
+    - "{{ role }}"

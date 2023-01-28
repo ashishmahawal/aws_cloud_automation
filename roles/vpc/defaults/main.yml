@@ -1,1 +1,2 @@
 vpc_name: "{{ lookup('env','VPC_NAME') | default('youtube-test-vpc',True) }}"
+action: "{{ lookup('env','ACTION') | default('create',True) }}"
