@@ -1,0 +1,16 @@
+- name: Fetch Security group Info
+  amazon.aws.ec2_security_group_info:
+    filters:
+      group-name: "{{ sg_name }}"
+  register: sg_info
+
+- when: sg_info.security_groups | length > 0
+  set_fact:
+    sg_id: "{{ sg_info.security_groups[0].group_id }}"
+
+- name: "Delete group by its id"
+  when: sg_id is defined and sg_id != ''
+  amazon.aws.ec2_security_group:
+    region: "{{ aws_region }}"
+    group_id: "{{ sg_id }}"
+    state: absent

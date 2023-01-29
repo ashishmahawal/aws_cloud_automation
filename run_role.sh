@@ -3,6 +3,7 @@ export ANSIBLE_DIR='/Users/ashishmahawal/Desktop/Projects/ansiblePlayground/aws_
 export VPC_NAME='ashish-test-vpc'
 export SUBNET_NAME='ashish-test-subnet'
 export KEY_NAME='ashish-test-key'
+export SG_NAME='ashish-test-sg'
 
 export ROLE=$1
 export ACTION=$2

@@ -1,0 +1,4 @@
+sg_name: "{{ lookup('env','SG_NAME') }}"
+vpc_name: "{{ lookup('env','VPC_NAME') }}"
+action: "{{ lookup('env','ACTION') | default('create',True) }}"
+aws_region: "{{ lookup('env','AWS_REGION') | default('us-east-1',True) }}"

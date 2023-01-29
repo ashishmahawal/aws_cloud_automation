@@ -1,0 +1,35 @@
+- name: Debug Information
+  debug:
+    msg:
+      - "Security Group Name ......... {{ sg_name }}"
+      - "AWS Region .................. {{aws_region  }}"
+
+- name: Fetch VPC Id from VPC Name
+  amazon.aws.ec2_vpc_net_info:
+    filters:
+      "tag:Name": "{{ vpc_name }}"
+  register: vpc_info
+
+- set_fact:
+    vpc_id: "{{ vpc_info.vpcs[0].vpc_id }}"
+
+- name: Create Security Group
+  amazon.aws.ec2_security_group:
+    name: "{{ sg_name }}"
+    description: Security Group for EC2
+    vpc_id: "{{ vpc_id }}"
+    region: "{{ aws_region }}"
+    tags:
+      Name: "{{ sg_name }}"
+    rules:
+      - proto: tcp
+        ports:
+        - 80
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 80
+  register: sg_info
+
+- name: Debug SG Info
+  debug:
+    msg:
+      - "Security Group Info ......... {{ sg_info }}"

@@ -1,0 +1,2 @@
+- name: Performing {{ action }} for Security Group
+  include_tasks: "{{ action }}.yml"
