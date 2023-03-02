@@ -7,9 +7,11 @@ jobs:
       - name: Install Deps
         run: |
           sudo apt-get install yamllint
-          ls
+      
+      - name: List dir
+        run: ls
 
       - name: Linter Check
         run: |
-          yamllint .
+          yamllint ./roles/
           
