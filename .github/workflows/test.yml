@@ -10,6 +10,8 @@ jobs:
       
       - name: List dir
         run: |
+          echo Checking env $GITHUB_WORKSPACE 
+          ls
           cd ../
           pwd
           ls
