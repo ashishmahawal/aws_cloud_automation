@@ -9,8 +9,10 @@ jobs:
           sudo apt-get install yamllint
       
       - name: List dir
-        run: ls
-
+        run: |
+          cd ../
+          pwd
+          ls
       - name: Linter Check
         run: |
           yamllint ./roles/
