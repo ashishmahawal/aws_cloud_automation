@@ -1,5 +1,14 @@
 name: CI-workflow
-on: [push,workflow_dispatch]
+on:
+  pull_request:
+    branches: 
+      - "dev-*"
+      - "main"
+      - "master"
+      - "test*"
+  push:
+    branches:
+      - "main"
 jobs:
   lint_check:
     runs-on: ubuntu-latest
