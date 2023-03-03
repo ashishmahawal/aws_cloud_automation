@@ -33,7 +33,7 @@ jobs:
       - name: Git Clone
         uses: actions/checkout@v3
       - name: Build Ansible collection
-        run: ansible-galaxy collection build --output-path ./output
+        run: ansible-galaxy collection build --output-path ./output --force
       - name: Upload to Ansible Galaxy
         run: echo "Requires API Token"
       - name: Upload artifacts
