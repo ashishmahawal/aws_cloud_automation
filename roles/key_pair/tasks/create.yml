@@ -9,7 +9,7 @@
 
 - name: Save Private Key to directory
   copy:
-    dest: /Users/ashishmahawal/Desktop/Projects/ansiblePlayground/aws_cloud_automation/key/{{key_name}}-private
+    dest: "{{ config_dir }}/{{ key_name }}-private"
     mode: 600
     owner: "ashishmahawal"
     content: |

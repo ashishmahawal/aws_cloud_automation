@@ -1,3 +1,4 @@
+---
 - name: Delete subnet for database servers
   amazon.aws.ec2_vpc_subnet:
     state: absent

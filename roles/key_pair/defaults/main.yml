@@ -1,2 +1,5 @@
 key_name: "{{ lookup('env', 'KEY_NAME') | default('ashish-ec2',True) }}"
 action: "{{ lookup('env','ACTION') | default('create',True) }}"
+config_dir: >
+  /Users/ashishmahawal/Desktop/Projects/ \
+  ansiblePlayground/aws_cloud_automation/key

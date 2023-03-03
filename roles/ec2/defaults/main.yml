@@ -1,3 +1,4 @@
+---
 instance_type: "{{ lookup('env','INSTANCE_TYPE') | default('t2.micro',True) }}"
 ami_id: "{{ lookup('env','AMI_ID') | default('ami-0aa7d40eeae50c9a9',True) }}"
 sg_name: "{{ lookup('env','SG_NAME') }}"
