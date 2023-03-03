@@ -1,5 +1,5 @@
 name: CI-workflow
-on: push
+on: [push,workflow_dispatch]
 jobs:
   lint_check:
     runs-on: ubuntu-latest
@@ -18,9 +18,12 @@ jobs:
         run: |
           yamllint ./roles/
   build_collection:
+    if: ${{ github.ref == 'refs/head/master' }}
     needs: [lint_check]
     runs-on: ubuntu-latest
     steps:
+      - name: Git Clone
+        uses: actions/checkout@v3
       - name: Build Ansible collection
         run: ansible-galaxy collection build
       - name: Upload to Ansible Galaxy
