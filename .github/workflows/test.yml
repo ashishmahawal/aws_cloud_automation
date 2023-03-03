@@ -1,5 +1,5 @@
 name: CI-workflow
-on: workflow_dispatch
+on: push
 jobs:
   lint_check:
     runs-on: ubuntu-latest
@@ -7,13 +7,12 @@ jobs:
       - name: Install Deps
         run: |
           sudo apt-get install yamllint
-      
+      - name: Clone the Repo
+        uses: actions/checkout@v3
+
       - name: List dir
         run: |
           echo Checking env $GITHUB_WORKSPACE 
-          ls
-          cd ../
-          pwd
           ls
       - name: Linter Check
         run: |
