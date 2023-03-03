@@ -1,0 +1,13 @@
+namespace: "ashishmahawal"
+name: "aws_automation"
+version: "1.0.0"
+readme: "README.md"
+description: "AWS Automation roles"
+authors:
+    - "@ashishmahawal"
+license:
+    - "MIT"
+tags:
+    - aws
+    - collection
+repository: "https://github.com/ashishmahawal/aws_cloud_automation"

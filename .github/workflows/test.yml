@@ -17,4 +17,12 @@ jobs:
       - name: Linter Check
         run: |
           yamllint ./roles/
-          
+  build_collection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Ansible collection
+        run: ansible-galaxy collection build
+      - name: Upload to Ansible Galaxy
+        run: echo "Requires API Token"
+      - name: Remove the bundle
+        run: rm -f ashishmahawal-aws_automation*.tar.gz
