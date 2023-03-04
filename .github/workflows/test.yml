@@ -12,7 +12,13 @@ on:
 jobs:
   lint_check:
     runs-on: ubuntu-latest
+    outputs:
+      test-var: ${{ steps.demo.outputs.job-age }}
     steps:
+      - name: Save Var during Job
+        id: demo
+        run: echo 'job-age=27' >> $GITHUB_OUTPUT
+
       - name: Install Deps
         run: |
           sudo apt-get install yamllint
@@ -43,3 +49,5 @@ jobs:
           path: |
             output
             README.md
+      - name: Make use of previous Job Var out
+        run: echo "${{ needs.lint_check.outputs.test-var }}"
