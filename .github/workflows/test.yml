@@ -20,16 +20,15 @@ jobs:
       - name: Cache Cloned repo
         uses: actions/cache@v3
         with:
-          path: ../aws_cloud_automation
+          path: ${{ github.workspace }}
           key: cloned-repo
       - name: Clone the Repo
         uses: actions/checkout@v3
       - name: List files
-        run: ls
-      - name: List dir
         run: |
-          echo Checking env $GITHUB_WORKSPACE 
-          ls
+          ls ../
+          pwd
+          echo ${{ github.workspace }}
       - name: Linter Check
         run: |
           yamllint ./roles/
