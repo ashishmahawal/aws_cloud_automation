@@ -16,13 +16,19 @@ jobs:
       - name: Install Deps
         run: |
           sudo apt-get install yamllint
+      # check caching
+      - name: Cache Cloned repo
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}
+          key: cloned-repo
       - name: Clone the Repo
         uses: actions/checkout@v3
-
-      - name: List dir
+      - name: List files
         run: |
-          echo Checking env $GITHUB_WORKSPACE 
-          ls
+          ls ../
+          pwd
+          echo ${{ github.workspace }}
       - name: Linter Check
         run: |
           yamllint ./roles/
@@ -30,6 +36,11 @@ jobs:
     needs: [lint_check]
     runs-on: ubuntu-latest
     steps:
+      - name: Cache Cloned repo
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}
+          key: cloned-repo
       - name: Git Clone
         uses: actions/checkout@v3
       - name: Build Ansible collection
@@ -43,3 +54,5 @@ jobs:
           path: |
             output
             README.md
+      - name: Make use of previous Job Var out
+        run: echo "${{ needs.lint_check.outputs.test-var }}"
