@@ -12,18 +12,18 @@ on:
 jobs:
   lint_check:
     runs-on: ubuntu-latest
-    outputs:
-      test-var: ${{ steps.demo.outputs.job-age }}
     steps:
-      - name: Save Var during Job
-        id: demo
-        run: echo 'job-age=27' >> $GITHUB_OUTPUT
-
       - name: Install Deps
         run: |
           sudo apt-get install yamllint
       - name: Clone the Repo
         uses: actions/checkout@v3
+      
+      - name: Cache Cloned repo
+        uses: actions/cache@v3
+        with:
+          path: ../aws_cloud_automation
+          key: cloned-repo-${{ hashFiles('**/roles') }}
 
       - name: List dir
         run: |
@@ -36,6 +36,11 @@ jobs:
     needs: [lint_check]
     runs-on: ubuntu-latest
     steps:
+      - name: Cache Cloned repo
+        uses: actions/cache@v3
+        with:
+          path: ../aws_cloud_automation
+          key: cloned-repo-${{ hashFiles('**/roles') }}
       - name: Git Clone
         uses: actions/checkout@v3
       - name: Build Ansible collection
